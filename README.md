@@ -1,6 +1,6 @@
 # FIREBEARD'S SHIP CURRIES FOR LAND DWELLERS
+<img width="1024" height="1536" alt="image" src="https://github.com/user-attachments/assets/12b8f5ab-5195-40f7-80d9-4a9ff2ff9ef8" />
 
-![Front cover illustration](firebeards_ship_curries_front_cover.png)
 
 ### A Galley Guide to Lentils, Spice, Fire and Feeding a Hungry Crew
 
