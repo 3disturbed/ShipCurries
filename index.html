@@ -92,7 +92,7 @@
     .recipe-item { display: flex; gap: .65rem; align-items: center; width: 100%; padding: .66rem; border: 1px solid transparent; border-radius: 12px; color: var(--muted); background: transparent; cursor: pointer; text-align: left; }
     .recipe-item:hover, .recipe-item.active { color: var(--ink); border-color: var(--line); background: rgba(255,255,255,.06); }
     .recipe-item .roman { width: 1.5rem; color: var(--gold); font-size: .73rem; font-weight: 800; }
-    .recipe-item .recipe-name { font-weight: 750; font-size: .91rem; }
+    .recipe-item .recipe-name { font-weight: 750; font-size: .91rem; }.recipe-item .recipe-name small { display: block; margin-top: .15rem; color: var(--muted); font-size: .73rem; font-weight: 500; }
     .recipe-item .recipe-tag { margin-left: auto; color: var(--sea); font-size: .72rem; }
     .explorer-main { min-width: 0; }
     .empty-search { padding: 2rem; color: var(--muted); text-align: center; border: 1px dashed var(--line); border-radius: var(--radius); }
@@ -101,12 +101,16 @@
     .recipe-header { position: relative; display: flex; justify-content: space-between; gap: 1.5rem; padding-bottom: 1.35rem; border-bottom: 1px solid var(--line); }
     .recipe-header h2 { margin: .35rem 0 .65rem; }
     .recipe-header p { max-width: 53ch; color: var(--muted); margin-bottom: 0; }
+    .land-dweller-name { display: inline-block; margin: .65rem 0 .15rem !important; padding: .38rem .62rem; border: 1px solid rgba(78, 151, 145, .5); border-radius: 99px; color: #cfe1da !important; background: rgba(78, 151, 145, .12); font-size: .86rem; }
     .serving-picker { flex: 0 0 auto; }
     .serving-picker label { display: block; color: var(--muted); font-size: .72rem; font-weight: 800; letter-spacing: .11em; text-transform: uppercase; }
     .serving-buttons { display: flex; gap: .3rem; margin-top: .45rem; }
     .serving-buttons button { width: 2.2rem; padding: .4rem; border: 1px solid var(--line); border-radius: 8px; color: var(--ink); background: transparent; cursor: pointer; }
     .serving-buttons button.active { color: #16110d; background: var(--gold); border-color: var(--gold); }
     .recipe-steps { display: grid; gap: .72rem; margin-top: 1.25rem; }
+    .catch-card { display: grid; grid-template-columns: auto 1fr; gap: .9rem; margin-top: 1.2rem; padding: 1rem; border: 1px solid rgba(78, 151, 145, .5); border-radius: 14px; background: rgba(78, 151, 145, .1); }
+    .catch-mark { display: grid; place-items: center; width: 2.5rem; height: 2.5rem; border-radius: 50%; color: #121919; background: var(--sea); font-size: 1.2rem; }
+    .catch-card h3 { margin: .1rem 0 .35rem; }.catch-card p { margin: 0; color: #d0ded9; }.catch-card details { grid-column: 2; }.catch-card summary { cursor: pointer; color: var(--gold); font-weight: 800; }.catch-card li { margin: .35rem 0; color: #d0ded9; }
     .recipe-step { border: 1px solid var(--line); border-radius: 14px; overflow: hidden; background: rgba(0,0,0,.11); }
     .recipe-step[open] { border-color: rgba(241,200,121,.43); }
     .recipe-step summary { display: flex; align-items: center; gap: .75rem; padding: .83rem 1rem; cursor: pointer; list-style: none; }
@@ -119,6 +123,7 @@
     .ingredients li { margin-bottom: .28rem; }
     .ingredients strong { color: var(--gold); }
     .step-content p { margin: 0; }
+    .recipe-note { margin-top: .7rem !important; padding-top: .7rem; border-top: 1px solid var(--line); color: #d5c9ba; }
     .recipe-footer { display: flex; justify-content: space-between; align-items: center; gap: 1rem; padding-top: 1.25rem; color: var(--muted); }
     .recipe-footer b { color: var(--ink); }
     .hidden { display: none !important; }
@@ -150,6 +155,18 @@
     .choice-set .chip { min-height: 64px; padding: .8rem; border-radius: 12px; text-align: left; text-transform: none; }
     .modal-chooser .recipe-list { grid-template-columns: repeat(2, minmax(0, 1fr)); margin-top: 0; }
     .modal-chooser .recipe-item { padding: .85rem; border: 1px solid var(--line); }
+    .modal-stores { width: min(820px, calc(100% - 1.4rem)); }
+    .stores-controls { display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: .8rem; margin-bottom: 1.35rem; }
+    .store-control { display: grid; gap: .5rem; padding: .9rem; border: 1px solid var(--line); border-radius: 14px; background: rgba(255,255,255,.04); color: var(--muted); font-size: .82rem; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; }
+    .store-control input { width: 100%; accent-color: var(--gold); }
+    .store-control select { width: 100%; padding: .45rem; border: 1px solid var(--line); border-radius: 8px; color: var(--ink); background: #202a30; font: inherit; text-transform: none; }
+    .store-control output { color: var(--gold); font-size: 1.25rem; letter-spacing: 0; text-transform: none; }
+    .stores-summary { margin: 0 0 1rem; color: var(--muted); }
+    .stores-summary strong { color: var(--gold); }
+    .stores-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .65rem; }
+    .store-item { padding: .85rem .95rem; border: 1px solid var(--line); border-radius: 12px; background: rgba(0,0,0,.12); }
+    .store-item b { display: block; color: var(--gold); font-size: 1.05rem; }.store-item span { color: var(--muted); font-size: .86rem; }
+    .provisions-note { margin-top: 1.2rem; padding: 1rem; border-left: 3px solid var(--sea); border-radius: 0 12px 12px 0; background: rgba(78, 151, 145, .1); }.provisions-note h3 { margin-bottom: .4rem; }.provisions-note p { margin: 0; color: #c8d5cf; }
     .modal-recipe { width: min(900px, calc(100% - 1.4rem)); }
     .recipe-modal-body { padding: 0; }.recipe-modal-body .recipe-panel { border: 0; border-radius: 0; box-shadow: none; min-height: auto; }
     .recipe-modal-body .recipe-footer { padding-bottom: 0; }
@@ -174,6 +191,7 @@
       .step-content { grid-template-columns: 1fr; padding-left: 1rem; }.summary-spark { display: none; }
       .balance-grid { grid-template-columns: repeat(2, 1fr); }.balance-tip:last-child { grid-column: span 2; }
       .modal-intro { align-items: flex-start; flex-direction: column; gap: .7rem; }.choice-set, .modal-chooser .recipe-list { grid-template-columns: 1fr; }
+      .stores-controls, .stores-grid { grid-template-columns: 1fr; }
     }
     @media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; } }
   </style>
@@ -185,6 +203,7 @@
       <nav class="nav" aria-label="Primary navigation">
         <button class="nav-link" type="button" data-open-modal="methodModal">How it works</button>
         <button class="nav-link" type="button" data-open-modal="curryModal">Choose a curry</button>
+        <button class="nav-link" type="button" data-open-modal="storesModal">Shopping list</button>
       </nav>
     </div>
   </header>
@@ -199,6 +218,7 @@
           <div class="hero-actions">
             <button class="button fire" type="button" data-open-modal="curryModal">Choose tonight's curry <span aria-hidden="true">→</span></button>
             <button class="button ghost" type="button" data-open-modal="methodModal">Show me the 7 little steps</button>
+            <button class="button ghost" type="button" data-open-modal="storesModal">Plan the ship's stores</button>
           </div>
           <p class="hero-caption">All guides serve four. Use the crew-size dial to scale the provisions.</p>
         </div>
@@ -229,6 +249,21 @@
     </div>
   </dialog>
 
+  <dialog class="modal modal-stores" id="storesModal" aria-labelledby="storesModalTitle">
+    <div class="modal-bar"><span class="eyebrow">Quartermaster's list</span><button class="close-modal" type="button" aria-label="Close">×</button></div>
+    <div class="modal-body">
+      <div class="modal-intro"><h2 id="storesModalTitle">How long until port?</h2><p>Choose the length of the trip, the number of hungry people, and how often you expect to make curry. The list below updates itself.</p></div>
+      <div class="stores-controls">
+        <label class="store-control"><span>Days away</span><input type="range" id="tripDays" min="3" max="42" step="1" value="7"><output id="tripDaysOutput">7 days</output></label>
+        <label class="store-control"><span>People to feed</span><select id="tripCrew"><option value="1">1 person</option><option value="2">2 people</option><option value="4" selected>4 people</option><option value="6">6 people</option><option value="8">8 people</option></select></label>
+        <label class="store-control"><span>Curry nights each week</span><select id="curryNights"><option value="1">1 night</option><option value="2">2 nights</option><option value="3" selected>3 nights</option><option value="4">4 nights</option><option value="5">5 nights</option><option value="6">6 nights</option><option value="7">Every night</option></select></label>
+      </div>
+      <p class="stores-summary" id="storesSummary"></p>
+      <div class="stores-grid" id="storesList" aria-live="polite"></div>
+      <div class="provisions-note"><h3>Fresh things do not last forever.</h3><p>On a trip longer than four days, take dried lentils, onions, garlic, tinned tomatoes, stock cubes and spices for the whole voyage. Buy fresh coriander, mint, spinach, fish and meat only for the first few days—or use frozen spinach and frozen fish instead.</p></div>
+    </div>
+  </dialog>
+
   <dialog class="modal modal-recipe" id="recipeModal" aria-labelledby="recipeModalTitle">
     <div class="modal-bar"><span class="eyebrow">Your recipe</span><button class="close-modal" type="button" aria-label="Close">×</button></div>
     <div class="modal-body recipe-modal-body"><div class="recipe-panel" id="recipePanel" aria-live="polite"></div></div>
@@ -249,17 +284,17 @@
 
   <script>
     const stages = [
-      ['Get the lentils ready', 'Wash the lentils and get the water ready.', 'This means nothing surprises you later.', 'A sieve, lentils, and water or stock.', 'Tip the lentils into a sieve. Run cold water over them and rub them gently with your fingers. Put them beside the pan with the measured water.', 'The water running off looks mostly clear.'],
-      ['Wake up the spices', 'Warm the oil, then make the spices smell lovely.', 'Oil helps the spices share their flavour with the whole pot.', 'Your cooking fat and any whole spices from the recipe.', 'Ask a grown-up to help with the hot pan. Warm the fat on medium heat. Add the whole spices and stir for about half a minute.', 'They smell nice and toasty—not smoky or black.'],
-      ['Soften the onion', 'Cook the onion until it is soft and sweet.', 'Soft onion makes the curry cosy and tasty.', 'The onion or shallot and a tiny pinch of salt.', 'Put in the onion. Stir every so often. Let it get soft; some curries want it pale, some want it golden or brown.', 'It looks soft instead of crunchy.'],
-      ['Add garlic and ginger', 'Give the garlic and ginger a very short turn in the pan.', 'They add a big taste, but they can burn quickly.', 'Garlic, ginger, and fresh chilli if the recipe has it.', 'Add them and stir, stir, stir for about 30 seconds. Do not walk away.', 'The sharp raw smell becomes warm and yummy.'],
-      ['Add the powder spices', 'Let the little spice powders wake up too.', 'A quick stir in the warm pan makes them taste less dusty.', 'The ground spices listed in your route.', 'Sprinkle them in. Stir for 15 seconds. If the pan looks dry, add a tiny splash of water right away.', 'The pan looks colourful and smells wonderful, not burnt.'],
-      ['Let it bubble gently', 'Add the lentils and liquid. Let the pot do the slow work.', 'Slow bubbles cook the lentils and make a sauce.', 'The lentils, water or stock, and any tomatoes or coconut milk.', 'Put them in, bring the pot to a small bubble, then turn the heat down. Stir every few minutes so the bottom does not stick.', 'The lentils are soft when you squash one with a spoon.'],
-      ['Taste, then make it happy', 'Add the last bright or creamy things and taste it.', 'Salt, lemon, herbs and butter make a good curry feel finished.', 'The finishing ingredients from your route and a clean spoon.', 'Turn off the heat. Stir in the finishing ingredients, taste a spoonful, and make one small change at a time.', 'You want another spoonful. That is how you know.']
+      ['Rinse the lentils — do not put them in the pan yet', 'Use a sieve and cold water. Red lentils do not need soaking.', 'Clean lentils cook evenly and make a smoother sauce.', 'A sieve, the lentils, and a measuring jug.', 'Put the lentils into a sieve over the sink. Run cold water over them for 10–15 seconds and rub them gently. Let them drain. Measure the recipe’s water or stock into a jug. Keep both beside the hob; do not add either to the pan yet.', 'The water draining from the lentils is mostly clear.'],
+      ['Heat the fat, then add whole spices', 'Use one empty saucepan. Medium heat, never high heat.', 'Oil or butter carries the spices’ flavour through the curry.', 'Your cooking fat and any whole spices listed in the recipe.', 'Put the empty saucepan on the hob. Turn the heat to medium. Add the fat; wait 30 seconds. Add the whole spices and stir for 20–30 seconds.', 'The spices smell warm and nutty. If they smoke or turn black, take the pan off the heat.'],
+      ['Put the onion into the pan and soften it', 'The onion goes into the hot spiced fat now.', 'Soft onion makes the curry sweet and gives the sauce body.', 'The chopped onion or shallot and a small pinch of salt.', 'Add the onion and salt to the saucepan. Stir so every piece gets some fat. Leave it on medium heat and stir every minute. Follow your recipe’s timing: pale and soft for gentle curries; golden or brown for richer ones.', 'A piece of onion squashes easily against the side of the pan.'],
+      ['Add garlic, ginger and fresh chilli', 'They go into the same pan after the onion is soft.', 'They taste wonderful, but burn quickly.', 'The garlic, ginger and fresh chilli listed in the recipe.', 'Put them into the saucepan. Stir constantly for 30 seconds. Do not leave the pan or answer the door.', 'The raw sharp smell has changed to a warm smell. Nothing is brown or black.'],
+      ['Add ground spices and stir briefly', 'The powdered spices go straight into the same saucepan.', 'A short toast takes away their dusty raw taste.', 'All ground spices from the recipe and a tablespoon of water nearby.', 'Sprinkle in the ground spices. Stir for 15 seconds. If they stick to the bottom or the pan looks dry, pour in one tablespoon of water and keep stirring.', 'The spices coat the onion and smell fragrant, not burnt.'],
+      ['Pour in the lentils and liquid; simmer gently', 'This is the first time the lentils and measured liquid go into the pan.', 'Gentle bubbling makes the lentils soft without catching on the bottom.', 'The drained lentils, measured water or stock, plus tomatoes or coconut milk if the recipe lists them.', 'Pour everything into the saucepan. Stir once. Turn heat up until you see steady small bubbles, then turn it down to low. Leave the lid off unless the recipe says otherwise. Stir the bottom every 3–4 minutes.', 'A lentil squashes easily with the back of a spoon.'],
+      ['Turn off the heat, add the finish, then taste', 'The final herbs, lemon, butter or yoghurt go in after cooking.', 'Finishing ingredients make the curry bright and balanced.', 'The recipe’s finishing ingredients and a clean spoon.', 'Turn off the hob. Add the finishing ingredients. Stir, then wait one minute. Taste with a clean spoon. Add only one small thing at a time: salt for dull flavour, lemon/lime for heaviness, or butter/coconut cream if it tastes sharp.', 'It tastes good enough that you want another spoonful.']
     ];
 
     const curries = [
-      { roman:'I', name:'The Calm Sea', title:'Gentle Butter Dal', mood:['gentle','creamy'], note:'Warm, soft and rich. Depth without an argument.', lentil:'Red lentils · 20–25 min', stages:[
+      { roman:'I', name:'The Calm Sea', title:'Gentle Butter Dal', landName:'North Indian-style gentle butter dal', mood:['gentle','creamy'], note:'Warm, soft and rich. Depth without an argument.', lentil:'Red lentils · 20–25 min', stages:[
         ['250 g red lentils; 750 ml water or light stock', 'Rinse until the water runs mostly clear.'],
         ['1½ tbsp ghee or butter; 1 tsp cumin seeds', 'Keep heat medium-low.'],
         ['1 small onion, finely chopped; pinch of salt', 'Cook soft and pale, 6–8 min.'],
@@ -268,7 +303,7 @@
         ['Lentils and liquid from stage 1', 'Simmer 20–25 min, until creamy.'],
         ['1 tbsp butter; ½ tsp garam masala; 1 tbsp lemon juice; coriander', 'Add lemon a little at a time.']
       ]},
-      { roman:'II', name:'Broadside', title:'Firebeard’s Hot Tomato Lentils', mood:['hot','tangy'], note:'Sharp, red and unapologetic. Heat with a reason to return.', lentil:'Red lentils · 20–25 min', stages:[
+      { roman:'II', name:'Broadside', title:'Firebeard’s Hot Tomato Lentils', landName:'Spicy tomato dal', mood:['hot','tangy'], note:'Sharp, red and unapologetic. Heat with a reason to return.', lentil:'Red lentils · 20–25 min', stages:[
         ['250 g red lentils; 650 ml water or stock', 'Tomatoes make up the remaining liquid.'],
         ['2 tbsp oil; 1 tsp cumin seeds; 1 dried red chilli', 'Remove dried chilli later for less heat.'],
         ['1 large onion, finely chopped; pinch of salt', 'Cook golden to deep gold, 12–15 min.'],
@@ -277,7 +312,7 @@
         ['1 × 400 g tin chopped tomatoes; lentils and liquid; 1 tsp sugar', 'Cook tomatoes 3 min, then simmer 20–25 min.'],
         ['1 tsp tamarind or 1 tbsp lemon; ½ tsp garam masala; coriander; salt', 'Add sugar only if tomatoes taste harsh.']
       ]},
-      { roman:'III', name:'Trade Winds', title:'Coconut Lentil Curry', mood:['creamy','fragrant'], note:'Creamy, aromatic and lightly sweet, held upright by lime.', lentil:'Red lentils · 18–22 min', stages:[
+      { roman:'III', name:'Trade Winds', title:'Coconut Lentil Curry', landName:'South Indian-style coconut dal', mood:['creamy','fragrant'], note:'Creamy, aromatic and lightly sweet, held upright by lime.', lentil:'Red lentils · 18–22 min', stages:[
         ['250 g red lentils; 400 ml water or stock', 'Coconut milk arrives later.'],
         ['1 tbsp coconut oil; 1 tsp mustard seeds; 8–10 curry leaves', 'Stand back when the seeds pop.'],
         ['1 small onion or 2 shallots, finely chopped; pinch of salt', 'Cook soft and pale, 6–8 min.'],
@@ -286,7 +321,7 @@
         ['Lentils and liquid; 1 × 400 ml tin full-fat coconut milk', 'Keep it gentle after the coconut goes in.'],
         ['Zest and juice of 1 lime; coriander; salt', 'Lime keeps richness from becoming cloying.']
       ]},
-      { roman:'IV', name:'The Black Hull', title:'Dark Roasted Lentil Curry', mood:['dark','savoury'], note:'Deep, earthy and almost meaty. This one earns its depth through time.', lentil:'Brown or black lentils · 35–50 min', stages:[
+      { roman:'IV', name:'The Black Hull', title:'Dark Roasted Lentil Curry', landName:'North Indian-inspired dark lentil curry', mood:['dark','savoury'], note:'Deep, earthy and almost meaty. This one earns its depth through time.', lentil:'Brown or black lentils · 35–50 min', stages:[
         ['250 g brown or black lentils; 1 litre water or rich vegetable stock', 'Soak black lentils overnight if possible.'],
         ['2 tbsp oil or ghee; 1 tsp cumin seeds; 1 black cardamom pod; 1 bay leaf', 'One black cardamom pod is plenty.'],
         ['2 large onions, finely chopped; pinch of salt', 'Cook deep brown, 20–30 min; add water if it catches.'],
@@ -295,7 +330,7 @@
         ['1 × 400 g tin tomatoes; lentils and stock; 1 tsp tomato purée', 'Simmer covered until tender, topping up liquid.'],
         ['1 tsp garam masala; tamarind or lemon; 1 tbsp butter; coriander', 'A tiny pinch of sugar can round a bitter edge.']
       ]},
-      { roman:'V', name:'Green Water', title:'Fresh Herb and Lime Lentils', mood:['fresh','fragrant'], note:'Bright, sharp and alive. Built for warm weather and open windows.', lentil:'Red lentils · 18–22 min', stages:[
+      { roman:'V', name:'Green Water', title:'Fresh Herb and Lime Lentils', landName:'Fresh herb and lime dal', mood:['fresh','fragrant'], note:'Bright, sharp and alive. Built for warm weather and open windows.', lentil:'Red lentils · 18–22 min', stages:[
         ['250 g red lentils; 700 ml water or light stock', 'Keep the finished curry slightly looser.'],
         ['2 tbsp neutral oil; 1 tsp cumin seeds', 'A pinch of fennel seed is optional.'],
         ['1 small onion or 2 shallots, finely chopped; pinch of salt', 'Cook soft, not brown, 5–7 min.'],
@@ -304,7 +339,7 @@
         ['Lentils and liquid', 'Simmer 18–22 min.'],
         ['Coriander; mint; zest and juice of 1 lime; olive oil or ghee', 'Stir herbs in off heat.']
       ]},
-      { roman:'VI', name:'The Golden Wake', title:'Yellow Lentil and Cumin Dal', mood:['gentle','fragrant'], note:'Buttery, gentle and slightly nutty—the quieter cousin of the Calm Sea.', lentil:'Yellow split lentils · 30–40 min', stages:[
+      { roman:'VI', name:'The Golden Wake', title:'Yellow Lentil and Cumin Dal', landName:'Tarka dal-style yellow lentils', mood:['gentle','fragrant'], note:'Buttery, gentle and slightly nutty—the quieter cousin of the Calm Sea.', lentil:'Yellow split lentils · 30–40 min', stages:[
         ['250 g yellow split lentils; 850 ml water or light stock', 'Rinse well; soak for 30 min if convenient.'],
         ['2 tbsp ghee; 1 tsp cumin seeds; ½ tsp fennel seeds', 'Fennel is optional but lovely.'],
         ['1 small onion, finely chopped; pinch of salt', 'Cook soft and golden, 8–10 min.'],
@@ -313,7 +348,7 @@
         ['Lentils and liquid', 'Simmer 30–40 min, until very tender.'],
         ['1 tbsp butter; 1 tbsp lemon; coriander; salt', 'Yoghurt is welcome at the table.']
       ]},
-      { roman:'VII', name:'Harbour Lights', title:'Spinach, Lemon and Garlic Lentils', mood:['fresh','gentle'], note:'Green, comforting and quick enough for a weekday.', lentil:'Red lentils · 18–22 min', stages:[
+      { roman:'VII', name:'Harbour Lights', title:'Spinach, Lemon and Garlic Lentils', landName:'Spinach and lemon dal', mood:['fresh','gentle'], note:'Green, comforting and quick enough for a weekday.', lentil:'Red lentils · 18–22 min', stages:[
         ['250 g red lentils; 700 ml water or light stock', 'The standard base.'],
         ['2 tbsp olive oil or ghee; 1 tsp cumin seeds', 'Keep it gentle.'],
         ['1 small onion, finely chopped; pinch of salt', 'Cook soft, 6–8 min.'],
@@ -322,7 +357,7 @@
         ['Lentils and liquid', 'Simmer 18–22 min.'],
         ['150 g baby spinach; zest and juice of 1 lemon; coriander; butter or olive oil', 'Stir in spinach until just wilted.']
       ]},
-      { roman:'VIII', name:'The Captain’s Korma', title:'Almond, Yoghurt and Cardamom Lentils', mood:['creamy','gentle'], note:'Mild, fragrant and luxurious without a treasure chest of ingredients.', lentil:'Red lentils · 20–25 min', stages:[
+      { roman:'VIII', name:'The Captain’s Korma', title:'Almond, Yoghurt and Cardamom Lentils', landName:'Korma-style lentils', mood:['creamy','gentle'], note:'Mild, fragrant and luxurious without a treasure chest of ingredients.', lentil:'Red lentils · 20–25 min', stages:[
         ['250 g red lentils; 650 ml water or light stock', 'Yoghurt loosens the sauce later.'],
         ['2 tbsp ghee; 3 green cardamom pods; 1 small cinnamon stick', 'Do not let cardamom burn.'],
         ['1 onion, very finely chopped; pinch of salt', 'Cook pale-golden, 10 min.'],
@@ -331,7 +366,7 @@
         ['Lentils and liquid; 3 tbsp ground almonds', 'Simmer 20–25 min.'],
         ['150 g Greek yoghurt; ½ tsp garam masala; lemon; coriander', 'Cool 2 min first so yoghurt remains smooth.']
       ]},
-      { roman:'IX', name:'Bengal Signal', title:'Mustard, Tomato and Coriander Lentils', mood:['tangy','fresh'], note:'Tangy, punchy and aromatic. Mustard makes it bright from the start.', lentil:'Red or yellow lentils · 20–40 min', stages:[
+      { roman:'IX', name:'Bengal Signal', title:'Mustard, Tomato and Coriander Lentils', landName:'Bengali-style mustard dal', mood:['tangy','fresh'], note:'Tangy, punchy and aromatic. Mustard makes it bright from the start.', lentil:'Red or yellow lentils · 20–40 min', stages:[
         ['250 g red or yellow split lentils; 750–850 ml water', 'Use more water for yellow lentils.'],
         ['2 tbsp mustard or neutral oil; 1 tsp black mustard seeds; ½ tsp cumin', 'Stand back for the mustard.'],
         ['1 onion, finely chopped; pinch of salt', 'Cook golden, 10–12 min.'],
@@ -340,7 +375,7 @@
         ['2 fresh tomatoes or ½ tin tomatoes; lentils and liquid', 'Simmer until tender.'],
         ['1 tsp Dijon or wholegrain mustard; large handful coriander; lemon; salt', 'Stir mustard in off heat.']
       ]},
-      { roman:'X', name:'Monsoon Lantern', title:'Pepper, Curry Leaf and Coconut Lentils', mood:['fragrant','creamy'], note:'Warm rather than fiery, with black pepper taking the watch.', lentil:'Red lentils · 18–22 min', stages:[
+      { roman:'X', name:'Monsoon Lantern', title:'Pepper, Curry Leaf and Coconut Lentils', landName:'Sri Lankan-style pepper and coconut lentils', mood:['fragrant','creamy'], note:'Warm rather than fiery, with black pepper taking the watch.', lentil:'Red lentils · 18–22 min', stages:[
         ['250 g red lentils; 400 ml water or stock', 'Coconut milk finishes the liquid.'],
         ['1 tbsp coconut oil; 1 tsp mustard seeds; 10 curry leaves; ½ tsp crushed peppercorns', 'Let leaves crackle, not blacken.'],
         ['2 shallots, finely chopped; pinch of salt', 'Cook soft, 6–8 min.'],
@@ -349,7 +384,7 @@
         ['Lentils and water; 1 × 400 ml tin coconut milk', 'Simmer gently, 18–22 min.'],
         ['½ tsp fresh black pepper; juice of ½ lime; coriander', 'Add more pepper only after tasting.']
       ]},
-      { roman:'XI', name:'Red Sails', title:'Vinegar, Potato and Chilli Lentils', mood:['hot','tangy'], note:'Sharp, hot and hearty—the pot for a wet evening.', lentil:'Red lentils + potato · 25–30 min', stages:[
+      { roman:'XI', name:'Red Sails', title:'Vinegar, Potato and Chilli Lentils', landName:'Goan-inspired hot and sour lentils', mood:['hot','tangy'], note:'Sharp, hot and hearty—the pot for a wet evening.', lentil:'Red lentils + potato · 25–30 min', stages:[
         ['200 g red lentils; 700 ml water or stock', 'Less lentil leaves room for potato.'],
         ['2 tbsp oil; 1 tsp cumin seeds; 1 dried red chilli', 'Keep dried chilli whole.'],
         ['1 large onion, finely chopped; pinch of salt', 'Cook deep golden, 12–15 min.'],
@@ -358,7 +393,7 @@
         ['1 × 400 g tin tomatoes; 300 g waxy potato, cubed; lentils and liquid', 'Simmer until potato is tender.'],
         ['1–2 tbsp cider vinegar; ½ tsp sugar; coriander; salt', 'Add vinegar in small additions.']
       ]},
-      { roman:'XII', name:'The Long Watch', title:'Black Lentil Butter Dal', mood:['dark','creamy'], note:'Slow, glossy and deeply comforting. Start this before hunger starts shouting.', lentil:'Whole black lentils · 60–90 min', stages:[
+      { roman:'XII', name:'The Long Watch', title:'Black Lentil Butter Dal', landName:'Dal makhani-inspired black lentils', mood:['dark','creamy'], note:'Slow, glossy and deeply comforting. Start this before hunger starts shouting.', lentil:'Whole black lentils · 60–90 min', stages:[
         ['250 g whole black lentils; 1 litre water or stock', 'Soak overnight; drain first.'],
         ['2 tbsp ghee; 1 tsp cumin seeds; 1 bay leaf', 'Low-medium heat.'],
         ['1 large onion, finely chopped; pinch of salt', 'Cook deep golden, 15 min.'],
@@ -367,7 +402,7 @@
         ['1 × 400 g tin tomatoes; lentils and liquid', 'Simmer covered, topping up hot water as needed.'],
         ['2 tbsp butter; 100 ml double or coconut cream; garam masala; salt', 'Tender lentils, glossy sauce.']
       ]},
-      { roman:'XIII', name:'The Bluewater Cargo', title:'Roasted Aubergine and Tamarind Lentils', mood:['savoury','tangy'], note:'Smoky, tangy and substantial. Roast the aubergine while the pot simmers.', lentil:'Red lentils · 20–25 min', stages:[
+      { roman:'XIII', name:'The Bluewater Cargo', title:'Roasted Aubergine and Tamarind Lentils', landName:'South Indian-inspired aubergine and tamarind dal', mood:['savoury','tangy'], note:'Smoky, tangy and substantial. Roast the aubergine while the pot simmers.', lentil:'Red lentils · 20–25 min', stages:[
         ['250 g red lentils; 700 ml water or light stock; 1 aubergine', 'Roast cubed aubergine with oil and salt at 220°C / 200°C fan for 25 min.'],
         ['2 tbsp oil; 1 tsp cumin seeds; ½ tsp mustard seeds', 'Cook until fragrant.'],
         ['1 onion, finely chopped; pinch of salt', 'Cook golden, 10–12 min.'],
@@ -376,7 +411,7 @@
         ['1 × 400 g tin tomatoes; lentils and liquid', 'Simmer 20–25 min.'],
         ['Roasted aubergine; 1–2 tsp tamarind paste; coriander; salt', 'Fold aubergine in gently.']
       ]},
-      { roman:'XIV', name:'The Spice Route', title:'Cinnamon, Raisin and Chickpea Lentils', mood:['fragrant','savoury'], note:'Sweet spice, gentle heat and enough ballast for a full table.', lentil:'Red lentils + chickpeas · 20–25 min', stages:[
+      { roman:'XIV', name:'The Spice Route', title:'Cinnamon, Raisin and Chickpea Lentils', landName:'Moroccan-inspired spiced lentils and chickpeas', mood:['fragrant','savoury'], note:'Sweet spice, gentle heat and enough ballast for a full table.', lentil:'Red lentils + chickpeas · 20–25 min', stages:[
         ['200 g red lentils; 650 ml water or stock', 'Chickpeas complete the body.'],
         ['2 tbsp olive oil; 1 cinnamon stick; 3 cardamom pods; 1 tsp cumin seeds', 'Cook 30 sec only.'],
         ['1 onion, finely chopped; pinch of salt', 'Cook golden, 10–12 min.'],
@@ -385,7 +420,7 @@
         ['1 × 400 g tin tomatoes; 1 × 400 g tin chickpeas; lentils and liquid; 2 tbsp raisins', 'Simmer 20–25 min.'],
         ['Lemon; parsley or coriander; toasted flaked almonds; salt', 'Remove whole spices if you find them.']
       ]},
-      { roman:'XV', name:'The Smoking Compass', title:'Mushroom, Fenugreek and Tomato Lentils', mood:['dark','savoury'], note:'Earthy and savoury without pretending lentils are meat.', lentil:'Brown or green lentils · 35–50 min', stages:[
+      { roman:'XV', name:'The Smoking Compass', title:'Mushroom, Fenugreek and Tomato Lentils', landName:'North Indian-style mushroom and fenugreek dal', mood:['dark','savoury'], note:'Earthy and savoury without pretending lentils are meat.', lentil:'Brown or green lentils · 35–50 min', stages:[
         ['250 g brown or green lentils; 1 litre rich vegetable stock', 'Rinse well; brown lentils need time.'],
         ['2 tbsp oil; 1 tsp cumin seeds; ½ tsp fennel seeds', 'Fennel rounds the mushroom flavour.'],
         ['1 large onion; 250 g mushrooms, sliced; pinch of salt', 'Brown onion, then cook mushrooms until their liquid evaporates.'],
@@ -407,10 +442,22 @@
       ['tangy', 'Tomato and tang'],
       ['savoury', 'Savoury and filling']
     ];
+    const recipeActions = [
+      'Do not turn on the hob yet. Put only the lentils into a sieve, rinse with cold water for 10–15 seconds, then let them drain. Measure the liquid into a jug. Keep both beside the hob; do not add them to the pan yet.',
+      'Put one empty saucepan on the hob. Set the heat to medium. Add the fat and wait 30 seconds. Add the whole spices and stir for 20–30 seconds. Keep them moving so they do not burn.',
+      'Add everything listed here to the hot saucepan. Stir, then cook on medium heat. Stir every minute until it looks as your route says.',
+      'Add everything listed here to the same saucepan. Stir without stopping for 30 seconds, then move straight to the next step.',
+      'Add the powder spices to the same saucepan. Stir for 15 seconds. If the pan looks dry or spices stick, add a tablespoon of water immediately.',
+      'Pour everything listed here into the saucepan. Stir once. Turn heat up until small bubbles appear, then turn it down low. Stir the bottom of the pan every 3–4 minutes.',
+      'Turn off the hob. Add everything listed here. Stir, wait one minute, then taste with a clean spoon. Make only one small adjustment at a time.'
+    ];
     let activeMood = 'all';
     let activeIndex = 0;
     let servings = 4;
     let cookStep = -1;
+    let tripDays = 7;
+    let tripCrew = 4;
+    let tripCurryNights = 3;
 
     const escapeHTML = value => value.replace(/[&<>'"]/g, char => ({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[char]));
     const scaled = (text, factor) => {
@@ -421,10 +468,44 @@
       });
     };
 
+    function renderStores() {
+      const meals = Math.max(1, Math.ceil((tripDays / 7) * tripCurryNights));
+      const crewFactor = tripCrew / 4;
+      const roundTo = (number, amount) => Math.ceil(number / amount) * amount;
+      const lentils = roundTo(250 * crewFactor * meals, 100);
+      const rice = roundTo(300 * crewFactor * meals, 100);
+      const onions = Math.ceil(1.2 * crewFactor * meals);
+      const cloves = Math.ceil(2.5 * crewFactor * meals);
+      const bulbs = Math.ceil(cloves / 10);
+      const ginger = roundTo(15 * crewFactor * meals, 10);
+      const fat = roundTo(30 * crewFactor * meals, 50);
+      const tomatoTins = Math.ceil(.6 * crewFactor * meals);
+      const coconutTins = Math.ceil(.25 * crewFactor * meals);
+      const citrus = Math.ceil(.5 * crewFactor * meals);
+      const stockCubes = Math.ceil(.6 * crewFactor * meals);
+      const jars = meals * crewFactor > 14 ? 2 : 1;
+      document.getElementById('tripDaysOutput').textContent = `${tripDays} ${tripDays === 1 ? 'day' : 'days'}`;
+      document.getElementById('storesSummary').innerHTML = `Plan for <strong>${meals} curry ${meals === 1 ? 'meal' : 'meals'}</strong> for <strong>${tripCrew} ${tripCrew === 1 ? 'person' : 'people'}</strong>. This assumes curry on ${tripCurryNights} ${tripCurryNights === 1 ? 'night' : 'nights'} each week.`;
+      const stores = [
+        [`${lentils} g dried lentils`, 'Mostly red lentils; add brown, yellow or black if you want the slower routes.'],
+        [`${rice} g rice or grains`, 'Optional, but enough for a generous dry-rice portion beside every curry.'],
+        [`${onions} onions`, 'They keep well and appear in nearly every route.'],
+        [`${bulbs} garlic bulb${bulbs === 1 ? '' : 's'} (${cloves} cloves)`, 'Whole bulbs travel better than peeled cloves.'],
+        [`${ginger} g fresh ginger`, 'Freeze some at the start of a longer journey, then grate from frozen.'],
+        [`${fat} ml cooking oil, ghee or butter`, 'Use the one you enjoy; coconut oil is useful for coconut curries.'],
+        [`${tomatoTins} × 400 g tins tomatoes`, 'For red, dark, tangy and hearty routes.'],
+        [`${coconutTins} × 400 ml tins coconut milk`, 'For creamy coconut routes; buy more if they are your favourite.'],
+        [`${citrus} lemons or limes`, 'For brightness at the end. Bottled lemon or tamarind is useful on longer trips.'],
+        [`${stockCubes} stock cubes`, 'Vegetable stock is the most flexible all-rounder.'],
+        [`${jars} small jar${jars === 1 ? '' : 's'} each of cumin, coriander, turmeric and chilli`, 'Add mustard seeds and garam masala if you want the widest choice of curries.']
+      ];
+      document.getElementById('storesList').innerHTML = stores.map(([amount, note]) => `<div class="store-item"><b>${amount}</b><span>${note}</span></div>`).join('');
+    }
+
     function renderMethodLesson(index = null) {
       const panel = document.getElementById('methodLesson');
       if (index === null) {
-        panel.innerHTML = `<p class="eyebrow">Before you turn on the heat</p><h3>Put these things where you can see them.</h3><p>For a simple red lentil curry for four, get everything out first. That makes cooking feel like a small game instead of a big puzzle.</p><ul class="ready-list"><li><span><strong>250 g red lentils</strong>, in a sieve</span></li><li><span><strong>750 ml water or light stock</strong>, measured in a jug</span></li><li><span><strong>2 tablespoons oil, ghee or butter</strong></span></li><li><span><strong>1 onion, garlic and ginger</strong>, ready to chop</span></li><li><span><strong>Salt and a lemon or lime</strong>, for the end</span></li></ul><p class="method-hint">A hot pan needs an adult's full attention. Keep little hands away from hot oil and steam.</p>`;
+        panel.innerHTML = `<p class="eyebrow">Before you turn on the heat</p><h3>Put these things where you can see them.</h3><p>For a simple red lentil curry for four, get everything out first. That makes cooking feel like a small game instead of a big puzzle.</p><ul class="ready-list"><li><span><strong>250 g red lentils</strong>, in a sieve — rinse them, but <strong>do not soak them</strong></span></li><li><span><strong>750 ml water or light stock</strong>, measured in a jug</span></li><li><span><strong>2 tablespoons oil, ghee or butter</strong></span></li><li><span><strong>1 onion, garlic and ginger</strong>, chopped and ready</span></li><li><span><strong>Salt and a lemon or lime</strong>, for the end</span></li></ul><p class="method-hint"><strong>Different lentils:</strong> red = rinse only; yellow split = rinse, then soak for 30 minutes if you have time; whole black = rinse and soak overnight.</p>`;
         return;
       }
       const stage = stages[index];
@@ -459,7 +540,7 @@
       const visible = curries.map((c, i) => ({c, i})).filter(({c}) => activeMood === 'all' || c.mood.includes(activeMood));
       document.getElementById('recipeList').innerHTML = visible.map(({c, i}) => `
         <button class="recipe-item ${i === activeIndex ? 'active' : ''}" type="button" data-recipe="${i}">
-          <span class="roman">${c.roman}</span><span class="recipe-name">${c.name}</span><span class="recipe-tag">${c.mood[0]}</span>
+          <span class="roman">${c.roman}</span><span class="recipe-name">${c.name}<small>${c.landName}</small></span><span class="recipe-tag">${c.mood[0]}</span>
         </button>`).join('');
       document.getElementById('emptySearch').classList.toggle('hidden', visible.length !== 0);
       document.querySelectorAll('[data-recipe]').forEach(button => button.addEventListener('click', () => {
@@ -472,19 +553,20 @@
       const curry = curries[activeIndex]; const factor = servings / 4;
       document.getElementById('recipePanel').innerHTML = `
         <header class="recipe-header">
-          <div><p class="eyebrow">Curry ${curry.roman} · ${curry.mood.join(' / ')}</p><h2 id="recipeModalTitle">${curry.name}</h2><p><strong>${curry.title}</strong> — ${curry.note}</p></div>
+          <div><p class="eyebrow">Curry ${curry.roman} · ${curry.mood.join(' / ')}</p><h2 id="recipeModalTitle">${curry.name}</h2><p><strong>${curry.title}</strong> — ${curry.note}</p><p class="land-dweller-name"><strong>Land Dweller Name:</strong> ${curry.landName}</p></div>
           <div class="serving-picker"><label>Crew size</label><div class="serving-buttons">${[2,4,6,8].map(s => `<button class="${s === servings ? 'active' : ''}" data-serving="${s}" type="button" aria-label="Serve ${s}">${s}</button>`).join('')}</div></div>
         </header>
+        <aside class="catch-card"><div class="catch-mark">+</div><div><p class="eyebrow">Completely optional</p><h3>Add your catch, fish or a supermarket meat bargain</h3><p>This curry is already complete without it. Skip this card for a vegetarian meal.</p></div><details><summary>Only open this if you want to add fish or meat</summary><ul><li><strong>Fish:</strong> use 400–500 g firm fish, cut into large pieces. During step 6, when the curry is gently bubbling, place fish on top. Cover and cook 5–8 minutes, until it flakes easily.</li><li><strong>Chicken or other quick-cooking meat:</strong> use about 500 g in bite-size pieces. At the very start of step 2, heat the fat and cook the meat for 5–6 minutes until the outside is no longer pink. Lift it into a bowl. Then add the step-2 spices to the pan and continue. Put the meat back in during step 6 and simmer until cooked through.</li><li><strong>Long-cooking meat:</strong> at the start of step 2, brown it in the fat before adding spices. In step 6, simmer the meat in the liquid until tender before adding lentils if it needs more than 30 minutes.</li></ul></details></aside>
         <div class="recipe-steps">${curry.stages.map((entry, i) => `
           <details class="recipe-step" ${i === 0 ? 'open' : ''}>
             <summary><span class="summary-number">${i + 1}</span><span class="summary-title">${stages[i][0]}</span><span class="summary-spark">${stages[i][1]}</span></summary>
-            <div class="step-content"><div><p class="eyebrow">You need</p><ul class="ingredients"><li><strong>${scaled(entry[0], factor)}</strong></li></ul></div><div><p class="eyebrow">Do this</p><p>${entry[1]}</p></div></div>
+            <div class="step-content"><div><p class="eyebrow">You need</p><ul class="ingredients"><li><strong>${scaled(entry[0], factor)}</strong></li></ul></div><div><p class="eyebrow">Do this</p><p>${recipeActions[i]}</p><p class="recipe-note"><strong>For this curry:</strong> ${entry[1]}</p></div></div>
           </details>`).join('')}</div>
         <div class="recipe-footer"><span><b>Cooking time:</b> ${curry.lentil}</span><button class="button fire" type="button" id="openCook">Cook one step at a time →</button></div>`;
       document.querySelectorAll('[data-serving]').forEach(button => button.addEventListener('click', () => { servings = Number(button.dataset.serving); renderRecipe(); }));
       document.getElementById('openCook').addEventListener('click', () => { document.getElementById('recipeModal').close(); document.getElementById('cookModal').showModal(); renderCook(); });
       document.getElementById('cookRecipeName').textContent = curry.name;
-      document.getElementById('cookRecipeNote').textContent = curry.title;
+      document.getElementById('cookRecipeNote').textContent = `${curry.title} · Land Dweller Name: ${curry.landName}`;
     }
 
     function renderCook() {
@@ -496,7 +578,7 @@
       }
       const entry = curry.stages[cookStep];
       target.className = 'now-cooking playing';
-      target.innerHTML = `<div class="big-stage">${cookStep + 1}</div><div><p class="eyebrow">${curry.name}</p><h3>${stages[cookStep][0]}</h3><p><strong>${scaled(entry[0], servings / 4)}</strong></p><p>${entry[1]}</p></div><div class="next"><button class="button ghost ${cookStep === 0 ? 'hidden' : ''}" id="previousStep">← Previous</button><span>Stage ${cookStep + 1} of 7</span><button class="button fire ${cookStep === 6 ? 'hidden' : ''}" id="nextStep">Next →</button></div>`;
+      target.innerHTML = `<div class="big-stage">${cookStep + 1}</div><div><p class="eyebrow">${curry.name}</p><h3>${stages[cookStep][0]}</h3><p><strong>Get:</strong> ${scaled(entry[0], servings / 4)}</p><p><strong>Do:</strong> ${recipeActions[cookStep]}</p><p class="recipe-note"><strong>For this curry:</strong> ${entry[1]}</p></div><div class="next"><button class="button ghost ${cookStep === 0 ? 'hidden' : ''}" id="previousStep">← Previous</button><span>Step ${cookStep + 1} of 7</span><button class="button fire ${cookStep === 6 ? 'hidden' : ''}" id="nextStep">Next →</button></div>`;
       start.classList.add('hidden'); end.classList.remove('hidden');
       document.getElementById('previousStep')?.addEventListener('click', () => { cookStep--; renderCook(); });
       document.getElementById('nextStep')?.addEventListener('click', () => { cookStep++; renderCook(); });
@@ -513,7 +595,10 @@
     document.querySelectorAll('[data-open-modal]').forEach(button => button.addEventListener('click', () => document.getElementById(button.dataset.openModal).showModal()));
     document.querySelectorAll('.close-modal').forEach(button => button.addEventListener('click', () => button.closest('dialog').close()));
     document.querySelectorAll('dialog').forEach(dialog => dialog.addEventListener('click', event => { if (event.target === dialog) dialog.close(); }));
-    renderMethodStages(); renderFinder(); renderRecipe(); renderCook();
+    document.getElementById('tripDays').addEventListener('input', event => { tripDays = Number(event.target.value); renderStores(); });
+    document.getElementById('tripCrew').addEventListener('change', event => { tripCrew = Number(event.target.value); renderStores(); });
+    document.getElementById('curryNights').addEventListener('change', event => { tripCurryNights = Number(event.target.value); renderStores(); });
+    renderMethodStages(); renderFinder(); renderRecipe(); renderCook(); renderStores();
   </script>
 </body>
 </html>
