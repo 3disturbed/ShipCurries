@@ -45,6 +45,7 @@
     .brand-mark { width: 28px; height: 28px; display: grid; place-items: center; border-radius: 50%; color: #111; background: var(--gold); font-size: .95rem; }
     .nav { display: flex; gap: .3rem; overflow-x: auto; scrollbar-width: none; }
     .nav-link { white-space: nowrap; color: var(--muted); padding: .42rem .7rem; border-radius: 99px; font-size: .86rem; }
+    .nav button { background: transparent; }
     .nav-link:hover { color: var(--ink); background: rgba(255,255,255,.07); }
 
     .hero { min-height: min(740px, calc(100svh - 58px)); display: grid; align-items: center; padding: clamp(2.5rem, 7vw, 6rem) 0 3rem; overflow: hidden; position: relative; }
@@ -64,14 +65,19 @@
     .method-grid { display: grid; grid-template-columns: .9fr 1.1fr; gap: 1.4rem; }
     .method-note, .calculator, .recipe-panel, .cook-mode { padding: clamp(1.25rem, 3vw, 2rem); border: 1px solid var(--line); border-radius: var(--radius); background: var(--panel); box-shadow: var(--shadow); }
     .method-note p { color: var(--muted); }
-    .base-list { list-style: none; padding: 0; margin: 1.3rem 0 0; display: grid; gap: .62rem; }
-    .base-list li { display: flex; gap: .7rem; color: #d8d0c6; }
-    .base-list b { color: var(--gold); min-width: 1.2rem; }
+    .ready-list { list-style: none; padding: 0; margin: 1.3rem 0; display: grid; gap: .62rem; }
+    .ready-list li { display: flex; align-items: start; gap: .7rem; color: #d8d0c6; }
+    .ready-list li::before { content: "✓"; flex: 0 0 auto; display: grid; place-items: center; width: 1.35rem; height: 1.35rem; margin-top: .08rem; border-radius: 50%; color: #17120c; background: var(--gold); font-size: .76rem; font-weight: 900; }
+    .method-hint { padding: .85rem 1rem; border-left: 3px solid var(--sea); border-radius: 0 10px 10px 0; background: rgba(78, 151, 145, .1); color: #d1ddd7 !important; font-size: .92rem; }
+    .lesson-box { display: grid; gap: .75rem; margin-top: 1.25rem; }
+    .lesson-line { padding: .8rem .9rem; border-radius: 12px; background: rgba(255,255,255,.055); }
+    .lesson-line b { display: block; margin-bottom: .18rem; color: var(--gold); font-size: .73rem; letter-spacing: .12em; text-transform: uppercase; }
+    .lesson-line span { color: #e4dcd1; }
     .stage-list { counter-reset: stage; display: grid; gap: .6rem; }
-    .stage { display: grid; grid-template-columns: 2.9rem 1fr auto; align-items: center; gap: .9rem; padding: .85rem; border: 1px solid transparent; border-radius: 12px; background: rgba(255,255,255,.035); cursor: pointer; text-align: left; color: var(--ink); }
+    .stage { display: grid; grid-template-columns: 2.9rem 1fr auto; align-items: center; gap: .9rem; padding: 1rem; border: 1px solid transparent; border-radius: 12px; background: rgba(255,255,255,.035); cursor: pointer; text-align: left; color: var(--ink); }
     .stage:hover, .stage.active { border-color: rgba(241,200,121,.46); background: rgba(241,200,121,.1); }
     .stage-number { display: grid; place-items: center; width: 2.2rem; aspect-ratio: 1; border-radius: 50%; color: #1a1510; background: var(--gold); font-weight: 900; }
-    .stage small { color: var(--muted); }
+    .stage small { display: block; margin-top: .13rem; color: var(--muted); }
     .stage-arrow { color: var(--gold); font-size: 1.2rem; }
 
     .explorer { border-top: 1px solid var(--line); }
@@ -131,6 +137,25 @@
     .balance-tip { padding: .85rem .65rem; border: 1px solid var(--line); border-radius: 12px; background: rgba(255,255,255,.035); text-align: center; }
     .balance-tip b { display: block; color: var(--gold); font-size: .82rem; }
     .balance-tip span { color: var(--muted); font-size: .72rem; }
+    dialog.modal { width: min(980px, calc(100% - 1.4rem)); max-height: min(900px, calc(100svh - 1.4rem)); margin: auto; padding: 0; overflow: hidden; border: 1px solid rgba(241, 200, 121, .46); border-radius: 22px; color: var(--ink); background: #172128; box-shadow: 0 30px 100px rgba(0,0,0,.65); }
+    dialog.modal::backdrop { background: rgba(4, 8, 11, .78); backdrop-filter: blur(6px); }
+    .modal-bar { display: flex; align-items: center; justify-content: space-between; min-height: 58px; padding: .85rem 1.1rem; border-bottom: 1px solid var(--line); background: rgba(0,0,0,.16); }
+    .close-modal { display: grid; place-items: center; width: 2.25rem; height: 2.25rem; border: 1px solid var(--line); border-radius: 50%; color: var(--ink); background: transparent; cursor: pointer; font-size: 1.5rem; line-height: 1; }
+    .close-modal:hover { color: #18120b; background: var(--gold); border-color: var(--gold); }
+    .modal-body { max-height: calc(min(900px, 100svh - 1.4rem) - 58px); overflow: auto; padding: clamp(1.1rem, 4vw, 2.4rem); }
+    .modal-intro { display: flex; align-items: end; justify-content: space-between; gap: 1.6rem; margin-bottom: 1.7rem; }
+    .modal-intro h2 { margin: 0; }.modal-intro p { max-width: 43ch; margin: 0; color: var(--muted); }
+    .modal-chooser { width: min(780px, calc(100% - 1.4rem)); }
+    .choice-set { display: grid; grid-template-columns: repeat(3, 1fr); margin-bottom: 1.5rem; }
+    .choice-set .chip { min-height: 64px; padding: .8rem; border-radius: 12px; text-align: left; text-transform: none; }
+    .modal-chooser .recipe-list { grid-template-columns: repeat(2, minmax(0, 1fr)); margin-top: 0; }
+    .modal-chooser .recipe-item { padding: .85rem; border: 1px solid var(--line); }
+    .modal-recipe { width: min(900px, calc(100% - 1.4rem)); }
+    .recipe-modal-body { padding: 0; }.recipe-modal-body .recipe-panel { border: 0; border-radius: 0; box-shadow: none; min-height: auto; }
+    .recipe-modal-body .recipe-footer { padding-bottom: 0; }
+    .modal-cook { width: min(700px, calc(100% - 1.4rem)); }
+    .modal-cook .modal-body { display: grid; gap: 1rem; }.modal-cook .cook-mode { box-shadow: none; }
+    .modal-cook .now-cooking { min-height: 340px; }
     footer { padding: 2.2rem 0; border-top: 1px solid var(--line); color: var(--muted); font-size: .88rem; }
     footer .shell { display: flex; justify-content: space-between; gap: 1rem; }
 
@@ -148,6 +173,7 @@
       .recipe-list { grid-template-columns: 1fr; max-height: 280px; overflow-y: auto; }
       .step-content { grid-template-columns: 1fr; padding-left: 1rem; }.summary-spark { display: none; }
       .balance-grid { grid-template-columns: repeat(2, 1fr); }.balance-tip:last-child { grid-column: span 2; }
+      .modal-intro { align-items: flex-start; flex-direction: column; gap: .7rem; }.choice-set, .modal-chooser .recipe-list { grid-template-columns: 1fr; }
     }
     @media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; } }
   </style>
@@ -157,9 +183,8 @@
     <div class="shell">
       <a class="brand" href="#top"><span class="brand-mark">⚓</span><span>Firebeard's Galley</span></a>
       <nav class="nav" aria-label="Primary navigation">
-        <a class="nav-link" href="#method">The method</a>
-        <a class="nav-link" href="#curries">Choose a curry</a>
-        <a class="nav-link" href="#cook">Cook's compass</a>
+        <button class="nav-link" type="button" data-open-modal="methodModal">How it works</button>
+        <button class="nav-link" type="button" data-open-modal="curryModal">Choose a curry</button>
       </nav>
     </div>
   </header>
@@ -172,8 +197,8 @@
           <h1>Ship curries for land dwellers.</h1>
           <p>One sturdy method. Fifteen directions to sail it. Choose a curry, gather each stage, and learn how to steer a pot of lentils by smell, sound and taste.</p>
           <div class="hero-actions">
-            <a class="button fire" href="#curries">Find tonight's curry <span aria-hidden="true">↓</span></a>
-            <a class="button ghost" href="#method">Learn the seven stages</a>
+            <button class="button fire" type="button" data-open-modal="curryModal">Choose tonight's curry <span aria-hidden="true">→</span></button>
+            <button class="button ghost" type="button" data-open-modal="methodModal">Show me the 7 little steps</button>
           </div>
           <p class="hero-caption">All guides serve four. Use the crew-size dial to scale the provisions.</p>
         </div>
@@ -184,86 +209,39 @@
       </div>
     </section>
 
-    <section class="method" id="method">
-      <div class="shell">
-        <div class="section-head">
-          <div><p class="eyebrow">The Firebeard method</p><h2>Learn this once.<br>Cook endlessly.</h2></div>
-          <p>Every curry below follows this order. The ingredients change; the logic does not. Click a stage to see what it is trying to achieve.</p>
-        </div>
-        <div class="method-grid">
-          <aside class="method-note">
-            <p class="eyebrow">The simple base</p>
-            <h3>Red lentil curry for four</h3>
-            <p>Keep these provisions nearby before the pan is hot. Different routes may switch the lentil, liquid or fat—but this is your reliable home port.</p>
-            <ul class="base-list">
-              <li><b>01</b><span><strong>250 g red lentils</strong>, rinsed</span></li>
-              <li><b>02</b><span><strong>750 ml water or light stock</strong></span></li>
-              <li><b>03</b><span><strong>2 tbsp fat</strong>: oil, ghee, butter or coconut oil</span></li>
-              <li><b>04</b><span><strong>1 onion, garlic and ginger</strong></span></li>
-              <li><b>05</b><span><strong>Salt and acid</strong> to finish</span></li>
-            </ul>
-          </aside>
-          <div class="stage-list" id="methodStages" aria-label="Seven cooking stages"></div>
-        </div>
-      </div>
-    </section>
-
-    <section class="explorer" id="curries">
-      <div class="shell">
-        <div class="section-head">
-          <div><p class="eyebrow">Choose your route</p><h2>What kind of night<br>is this?</h2></div>
-          <p>Pick a mood or browse the whole fleet. Every route reveals exactly what joins the pot at every stage.</p>
-        </div>
-        <div class="explorer-layout">
-          <aside class="finder" aria-label="Curry finder">
-            <p class="eyebrow">Flavour compass</p>
-            <h3>Find a curry</h3>
-            <p>Filter the fleet by what you want from your bowl.</p>
-            <div class="chip-set" id="chipSet"></div>
-            <div class="recipe-list" id="recipeList" aria-label="Curry guides"></div>
-          </aside>
-          <div class="explorer-main">
-            <div class="recipe-panel" id="recipePanel" aria-live="polite"></div>
-            <p class="empty-search hidden" id="emptySearch">No ship in the fleet matches that route. Try a broader mood.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="cook-section" id="cook">
-      <div class="shell">
-        <div class="section-head">
-          <div><p class="eyebrow">Cook's compass</p><h2>Stop reading.<br>Start stirring.</h2></div>
-          <p>Open a recipe, then use cook mode as a calm, one-stage-at-a-time galley companion. Your place remains until you end the watch.</p>
-        </div>
-        <div class="cook-grid">
-          <article class="cook-mode">
-            <p class="eyebrow">Current route</p>
-            <h3 id="cookRecipeName">The Calm Sea</h3>
-            <p id="cookRecipeNote">Gentle Butter Dal</p>
-            <div class="cook-controls">
-              <button class="button fire" id="startCook">Begin cooking</button>
-              <button class="button ghost hidden" id="endCook">End watch</button>
-            </div>
-            <div class="balance-grid" aria-label="Taste and balance guide">
-              <div class="balance-tip"><b>Flat?</b><span>Add salt.</span></div>
-              <div class="balance-tip"><b>Heavy?</b><span>Add acid.</span></div>
-              <div class="balance-tip"><b>Thin?</b><span>Simmer on.</span></div>
-              <div class="balance-tip"><b>Harsh?</b><span>Add fat.</span></div>
-              <div class="balance-tip"><b>Done?</b><span>Stop touching it.</span></div>
-            </div>
-          </article>
-          <article class="now-cooking" id="nowCooking">
-            <div>
-              <p class="eyebrow">Ready when you are</p>
-              <h3>One stage at a time.</h3>
-              <p>Select a route above, then begin cooking. Keyboard crew: use the right arrow to move forward and left arrow to go back.</p>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
   </main>
+
+  <dialog class="modal" id="methodModal" aria-labelledby="methodModalTitle">
+    <div class="modal-bar"><span class="eyebrow">The easy method</span><button class="close-modal" type="button" aria-label="Close">×</button></div>
+    <div class="modal-body">
+      <div class="modal-intro"><h2 id="methodModalTitle">Seven little steps.</h2><p>Start with the list on the left. Then tap one step at a time. There are no secret tricks.</p></div>
+      <div class="method-grid"><aside class="method-note" id="methodLesson"></aside><div class="stage-list" id="methodStages" aria-label="Seven cooking stages"></div></div>
+    </div>
+  </dialog>
+
+  <dialog class="modal modal-chooser" id="curryModal" aria-labelledby="curryModalTitle">
+    <div class="modal-bar"><span class="eyebrow">Pick dinner</span><button class="close-modal" type="button" aria-label="Close">×</button></div>
+    <div class="modal-body">
+      <div class="modal-intro"><h2 id="curryModalTitle">What sounds good?</h2><p>Choose a plain answer below. You are not choosing wrong—you are just choosing tonight.</p></div>
+      <div class="chip-set choice-set" id="chipSet"></div>
+      <div class="recipe-list" id="recipeList" aria-label="Curry guides"></div>
+      <p class="empty-search hidden" id="emptySearch">Nothing there yet. Try “Show me everything”.</p>
+    </div>
+  </dialog>
+
+  <dialog class="modal modal-recipe" id="recipeModal" aria-labelledby="recipeModalTitle">
+    <div class="modal-bar"><span class="eyebrow">Your recipe</span><button class="close-modal" type="button" aria-label="Close">×</button></div>
+    <div class="modal-body recipe-modal-body"><div class="recipe-panel" id="recipePanel" aria-live="polite"></div></div>
+  </dialog>
+
+  <dialog class="modal modal-cook" id="cookModal" aria-labelledby="cookModalTitle">
+    <div class="modal-bar"><span class="eyebrow">Cook along</span><button class="close-modal" type="button" aria-label="Close">×</button></div>
+    <div class="modal-body">
+      <article class="cook-mode"><p class="eyebrow">You are making</p><h2 id="cookModalTitle"><span id="cookRecipeName">The Calm Sea</span></h2><p id="cookRecipeNote">Gentle Butter Dal</p><div class="cook-controls"><button class="button fire" id="startCook">Start with step 1</button><button class="button ghost hidden" id="endCook">Start over</button></div></article>
+      <article class="now-cooking" id="nowCooking"></article>
+      <div class="balance-grid" aria-label="Simple tasting help"><div class="balance-tip"><b>Tastes boring?</b><span>Add a tiny pinch of salt.</span></div><div class="balance-tip"><b>Feels heavy?</b><span>Squeeze in lemon or lime.</span></div><div class="balance-tip"><b>Too thin?</b><span>Let it bubble longer.</span></div><div class="balance-tip"><b>Too sharp?</b><span>Add a little butter.</span></div><div class="balance-tip"><b>Tastes great?</b><span>Stop. It is ready.</span></div></div>
+    </div>
+  </dialog>
 
   <footer>
     <div class="shell"><span>Firebeard's Ship Curries for Land Dwellers</span><span>Made for hungry crews and ordinary pots.</span></div>
@@ -271,13 +249,13 @@
 
   <script>
     const stages = [
-      ['Ready the lentils', 'Rinse and measure the liquid.', 'It makes the cooking predictable.'],
-      ['Wake the spices', 'Fry whole spices in fat until fragrant.', 'Fat carries the flavour.'],
-      ['Build the foundation', 'Cook the onion, shallot or foundation.', 'This gives sweetness and body.'],
-      ['Add the sharp things', 'Stir in garlic, ginger and fresh chilli.', 'Thirty seconds is often enough.'],
-      ['Bloom the powders', 'Briefly fry ground spices.', 'This removes their raw edge.'],
-      ['Simmer the curry', 'Add lentils and liquid; cook until tender.', 'This brings the pot together.'],
-      ['Finish and balance', 'Add acid, herbs, richness or tadka.', 'This makes it taste awake.']
+      ['Get the lentils ready', 'Wash the lentils and get the water ready.', 'This means nothing surprises you later.', 'A sieve, lentils, and water or stock.', 'Tip the lentils into a sieve. Run cold water over them and rub them gently with your fingers. Put them beside the pan with the measured water.', 'The water running off looks mostly clear.'],
+      ['Wake up the spices', 'Warm the oil, then make the spices smell lovely.', 'Oil helps the spices share their flavour with the whole pot.', 'Your cooking fat and any whole spices from the recipe.', 'Ask a grown-up to help with the hot pan. Warm the fat on medium heat. Add the whole spices and stir for about half a minute.', 'They smell nice and toasty—not smoky or black.'],
+      ['Soften the onion', 'Cook the onion until it is soft and sweet.', 'Soft onion makes the curry cosy and tasty.', 'The onion or shallot and a tiny pinch of salt.', 'Put in the onion. Stir every so often. Let it get soft; some curries want it pale, some want it golden or brown.', 'It looks soft instead of crunchy.'],
+      ['Add garlic and ginger', 'Give the garlic and ginger a very short turn in the pan.', 'They add a big taste, but they can burn quickly.', 'Garlic, ginger, and fresh chilli if the recipe has it.', 'Add them and stir, stir, stir for about 30 seconds. Do not walk away.', 'The sharp raw smell becomes warm and yummy.'],
+      ['Add the powder spices', 'Let the little spice powders wake up too.', 'A quick stir in the warm pan makes them taste less dusty.', 'The ground spices listed in your route.', 'Sprinkle them in. Stir for 15 seconds. If the pan looks dry, add a tiny splash of water right away.', 'The pan looks colourful and smells wonderful, not burnt.'],
+      ['Let it bubble gently', 'Add the lentils and liquid. Let the pot do the slow work.', 'Slow bubbles cook the lentils and make a sauce.', 'The lentils, water or stock, and any tomatoes or coconut milk.', 'Put them in, bring the pot to a small bubble, then turn the heat down. Stir every few minutes so the bottom does not stick.', 'The lentils are soft when you squash one with a spoon.'],
+      ['Taste, then make it happy', 'Add the last bright or creamy things and taste it.', 'Salt, lemon, herbs and butter make a good curry feel finished.', 'The finishing ingredients from your route and a clean spoon.', 'Turn off the heat. Stir in the finishing ingredients, taste a spoonful, and make one small change at a time.', 'You want another spoonful. That is how you know.']
     ];
 
     const curries = [
@@ -418,7 +396,17 @@
       ]}
     ];
 
-    const moods = ['all', 'gentle', 'hot', 'creamy', 'dark', 'fresh', 'fragrant', 'tangy', 'savoury'];
+    const moodChoices = [
+      ['all', 'Show me everything'],
+      ['gentle', 'Mild and cosy'],
+      ['hot', 'Hot and spicy'],
+      ['creamy', 'Creamy'],
+      ['dark', 'Deep and hearty'],
+      ['fresh', 'Fresh and zesty'],
+      ['fragrant', 'Coconut and spice'],
+      ['tangy', 'Tomato and tang'],
+      ['savoury', 'Savoury and filling']
+    ];
     let activeMood = 'all';
     let activeIndex = 0;
     let servings = 4;
@@ -433,21 +421,31 @@
       });
     };
 
+    function renderMethodLesson(index = null) {
+      const panel = document.getElementById('methodLesson');
+      if (index === null) {
+        panel.innerHTML = `<p class="eyebrow">Before you turn on the heat</p><h3>Put these things where you can see them.</h3><p>For a simple red lentil curry for four, get everything out first. That makes cooking feel like a small game instead of a big puzzle.</p><ul class="ready-list"><li><span><strong>250 g red lentils</strong>, in a sieve</span></li><li><span><strong>750 ml water or light stock</strong>, measured in a jug</span></li><li><span><strong>2 tablespoons oil, ghee or butter</strong></span></li><li><span><strong>1 onion, garlic and ginger</strong>, ready to chop</span></li><li><span><strong>Salt and a lemon or lime</strong>, for the end</span></li></ul><p class="method-hint">A hot pan needs an adult's full attention. Keep little hands away from hot oil and steam.</p>`;
+        return;
+      }
+      const stage = stages[index];
+      panel.innerHTML = `<p class="eyebrow">Step ${index + 1} of 7</p><h3>${stage[0]}</h3><p>${stage[1]}</p><div class="lesson-box"><div class="lesson-line"><b>Pick up</b><span>${stage[3]}</span></div><div class="lesson-line"><b>Do this</b><span>${stage[4]}</span></div><div class="lesson-line"><b>You are doing it right when…</b><span>${stage[5]}</span></div></div>`;
+    }
+
     function renderMethodStages() {
       document.getElementById('methodStages').innerHTML = stages.map((stage, index) => `
-        <button class="stage ${index === 0 ? 'active' : ''}" type="button" data-method="${index}">
-          <span class="stage-number">${index + 1}</span><span><strong>${stage[0]}</strong><br><small>${stage[1]}</small></span><span class="stage-arrow">›</span>
+        <button class="stage" type="button" data-method="${index}">
+          <span class="stage-number">${index + 1}</span><span><strong>Step ${index + 1}: ${stage[0]}</strong><small>${stage[1]}</small></span><span class="stage-arrow">›</span>
         </button>`).join('');
+      renderMethodLesson();
       document.querySelectorAll('[data-method]').forEach(button => button.addEventListener('click', () => {
         document.querySelectorAll('[data-method]').forEach(el => el.classList.remove('active'));
         button.classList.add('active');
-        const i = Number(button.dataset.method);
-        button.querySelector('small').textContent = stages[i][2];
+        renderMethodLesson(Number(button.dataset.method));
       }));
     }
 
     function renderChips() {
-      document.getElementById('chipSet').innerHTML = moods.map(mood => `<button class="chip ${mood === activeMood ? 'active' : ''}" type="button" data-mood="${mood}">${mood === 'all' ? 'All routes' : mood}</button>`).join('');
+      document.getElementById('chipSet').innerHTML = moodChoices.map(([mood, label]) => `<button class="chip ${mood === activeMood ? 'active' : ''}" type="button" data-mood="${mood}">${label}</button>`).join('');
       document.querySelectorAll('[data-mood]').forEach(chip => chip.addEventListener('click', () => {
         activeMood = chip.dataset.mood;
         const eligible = curries.findIndex(c => activeMood === 'all' || c.mood.includes(activeMood));
@@ -466,6 +464,7 @@
       document.getElementById('emptySearch').classList.toggle('hidden', visible.length !== 0);
       document.querySelectorAll('[data-recipe]').forEach(button => button.addEventListener('click', () => {
         activeIndex = Number(button.dataset.recipe); cookStep = -1; renderFinder(); renderRecipe(); renderCook();
+        document.getElementById('curryModal').close(); document.getElementById('recipeModal').showModal();
       }));
     }
 
@@ -473,16 +472,17 @@
       const curry = curries[activeIndex]; const factor = servings / 4;
       document.getElementById('recipePanel').innerHTML = `
         <header class="recipe-header">
-          <div><p class="eyebrow">Curry ${curry.roman} · ${curry.mood.join(' / ')}</p><h2>${curry.name}</h2><p><strong>${curry.title}</strong> — ${curry.note}</p></div>
+          <div><p class="eyebrow">Curry ${curry.roman} · ${curry.mood.join(' / ')}</p><h2 id="recipeModalTitle">${curry.name}</h2><p><strong>${curry.title}</strong> — ${curry.note}</p></div>
           <div class="serving-picker"><label>Crew size</label><div class="serving-buttons">${[2,4,6,8].map(s => `<button class="${s === servings ? 'active' : ''}" data-serving="${s}" type="button" aria-label="Serve ${s}">${s}</button>`).join('')}</div></div>
         </header>
         <div class="recipe-steps">${curry.stages.map((entry, i) => `
           <details class="recipe-step" ${i === 0 ? 'open' : ''}>
             <summary><span class="summary-number">${i + 1}</span><span class="summary-title">${stages[i][0]}</span><span class="summary-spark">${stages[i][1]}</span></summary>
-            <div class="step-content"><div><p class="eyebrow">Put aboard</p><ul class="ingredients"><li><strong>${scaled(entry[0], factor)}</strong></li></ul></div><div><p class="eyebrow">The work</p><p>${entry[1]}</p></div></div>
+            <div class="step-content"><div><p class="eyebrow">You need</p><ul class="ingredients"><li><strong>${scaled(entry[0], factor)}</strong></li></ul></div><div><p class="eyebrow">Do this</p><p>${entry[1]}</p></div></div>
           </details>`).join('')}</div>
-        <div class="recipe-footer"><span><b>Lentil watch:</b> ${curry.lentil}</span><span>Amounts scaled for ${servings} people.</span></div>`;
+        <div class="recipe-footer"><span><b>Cooking time:</b> ${curry.lentil}</span><button class="button fire" type="button" id="openCook">Cook one step at a time →</button></div>`;
       document.querySelectorAll('[data-serving]').forEach(button => button.addEventListener('click', () => { servings = Number(button.dataset.serving); renderRecipe(); }));
+      document.getElementById('openCook').addEventListener('click', () => { document.getElementById('recipeModal').close(); document.getElementById('cookModal').showModal(); renderCook(); });
       document.getElementById('cookRecipeName').textContent = curry.name;
       document.getElementById('cookRecipeNote').textContent = curry.title;
     }
@@ -510,6 +510,9 @@
       if (event.key === 'ArrowLeft' && cookStep > 0) { cookStep--; renderCook(); }
     });
 
+    document.querySelectorAll('[data-open-modal]').forEach(button => button.addEventListener('click', () => document.getElementById(button.dataset.openModal).showModal()));
+    document.querySelectorAll('.close-modal').forEach(button => button.addEventListener('click', () => button.closest('dialog').close()));
+    document.querySelectorAll('dialog').forEach(dialog => dialog.addEventListener('click', event => { if (event.target === dialog) dialog.close(); }));
     renderMethodStages(); renderFinder(); renderRecipe(); renderCook();
   </script>
 </body>
